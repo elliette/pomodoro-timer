@@ -1,0 +1,19 @@
+<template>
+  <h1>Pomodoro Timer</h1>
+    <form submit.trigger="startTimer()">
+        <h2>Work Time:</h2>
+        <input type="number" value.bind="timers.WORKING">
+        <p>minutes</p>
+        <h2>Short Break Time:</h2>
+        <input type="number" value.bind="timers.SHORT_BREAK">
+        <p>minutes</p>
+        <h2>Number of Intervals:</h2>
+        <input type="number" value.bind="numIntervals">
+        <h2>Long Break Time:</h2>
+        <input type="number" value.bind="timers.LONG_BREAK">
+        <p>minutes</p>
+        <button type="submit">Start!</button>
+    </form>
+    <h1>${currInterval.type}</h1>
+    <h1>${timeAsString}</h1>
+</template>
