@@ -19,8 +19,8 @@ export class App {
 			LONG_BREAK: 15
 		};
 		this.currInterval = {
-			num: 1,
-			type: working
+			num: 0,
+			type: ''
 		};
 		this.currTimer = null;
 	}
@@ -40,7 +40,7 @@ export class App {
 		const startNextTimer = () => {
 			clearInterval(this.currTimer);
 
-			if (this.currInterval.type === longBreak){
+			if ((!this.currInterval.type && !this.currInterval.num) || this.currInterval.type === longBreak){
 				this.currInterval.num = 1;
 				this.currInterval.type = working;
 			} else if (this.currInterval.type === working && this.currInterval.num === this.numIntervals){
