@@ -1,30 +1,31 @@
 <template>
+    <div id="sound-toggle">
+    </div>
     <div id="app">
     <header>
-        <h1>POMODORO TIMER</h1>
+        <h1>Pomodoro Timer 🍅 </h1>
     </header>
      
     <main>
-        <form submit.trigger="startTimer()" if.bind="!currTimer">
-            <p>I would like to work for intervals of <input type="number" value.bind="timers.WORKING"> minutes with a short <input type="number" value.bind="timers.SHORT_BREAK"> minute break in between each one. After <input type="number" value.bind="numIntervals"> intervals, I would like to take a longer <input type="number" value.bind="timers.LONG_BREAK"> minute break.</p>
+        <form submit.trigger="startTimer()" if.bind="!timerOn">
+            <p>I would like to work for intervals of <input type="number" value.bind="timers.WORK_TIME"> minutes with a short <input type="number" value.bind="timers.SHORT_BREAK"> minute break in between.  After <input type="number" value.bind="numIntervals"> intervals, I would like to take a longer <input type="number" value.bind="timers.LONG_BREAK"> minute break.</p>
 
-            <button type="submit">Let's Go!</button>
+            <button type="submit">Let's go!</button>
         </form>
             
-        <div if.bind="currTimer" id="timer">
+        <div if.bind="timerOn" id="timer">
             
             <div id="interval-info"> 
-               <h2>${currInterval.type}</h2> 
+               <h2>${currInterval.type.split('_').join(' ')}</h2> 
                <h3>Interval no. ${currInterval.num}</h3>
             </div>
             
-            <div id="time">
+            <div id="time" class.bind="currInterval.type">
                 <h1>${timeAsString}</h1>
             </div>
 
             <div id="timer-btns"> 
                 <button click.delegate="stopTimer()">Clear</button>
-                <button>Pause</button>
             </div>
         </div>
 
@@ -32,7 +33,11 @@
     </main>
 
     <footer>
-        <p>Made with ❤ by Elliott</p>
+        <div>
+        <p class="sound-prefs">Enable sound:  </p>
+        <input class="sound-prefs" type="checkbox" checked.bind="soundOn">
+        </div>
+        <p>Made with <a href="../puppies.mp4">❤</a> & <a href="http://aurelia.io/">Aurelia</a> by <a href="https://github.com/elliette">Elliott Brooks</a></p>
     </footer>
     </div>
 </template>

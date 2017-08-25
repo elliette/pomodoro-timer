@@ -1,6 +1,11 @@
-const working = 'WORKING',
-	shortBreak = 'SHORT_BREAK',
-	longBreak = 'LONG_BREAK';
+'use strict';
+
+const gong = new Audio('../gong.wav');
+const beep = new Audio('../beep.wav');
+
+const working = 'WORK_TIME';
+const shortBreak = 'SHORT_BREAK';
+const longBreak = 'LONG_BREAK';
 
 const displayTime = (secs) => {
 	const minutes = Math.floor(secs / 60);
@@ -14,20 +19,33 @@ export class App {
 		this.timeInSeconds = 0;
 		this.timeAsString = '';
 		this.timers = {
-			WORKING: 25,
+			WORK_TIME: 25,
 			SHORT_BREAK: 5,
 			LONG_BREAK: 15
 		};
 		this.currInterval = {
-			num: 0,
-			type: ''
+			num: 1,
+			type: working
 		};
 		this.currTimer = null;
+		this.nextTimer = null;
+		this.timerOn = false;
+		this.soundOn = false;
+	}
+
+	stopTimer(){
+		clearTimeout(this.nextTimer);
+		clearInterval(this.currTimer);
+		this.currInterval = {
+			num: 1,
+			type: working
+		};
+		this.timeInSeconds = 0;
+		this.timeAsString = '';
+		this.timerOn = false;
 	}
 
 	startTimer(){
-
-		// Helper functions:
 		const convertMinsToSeconds = () => {
 			this.timeInSeconds = this.timers[this.currInterval.type] * 60;
 		};
@@ -55,9 +73,17 @@ export class App {
 			this.startTimer();
 		};
 
-		// Implementation:
 		convertMinsToSeconds();
 		this.currTimer = setInterval(getTime, 1000);
-		setTimeout(startNextTimer, this.timeInSeconds * 1000);
+		this.nextTimer = setTimeout(startNextTimer, this.timeInSeconds * 1000);
+		if (this.soundOn) {
+			if (this.currInterval.type === working){
+				beep.play();
+			} else {
+				gong.play();
+			}
+		}
+		this.timerOn = true;
 	}
+
 }
