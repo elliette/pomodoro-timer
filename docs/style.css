@@ -1,0 +1,156 @@
+/* #93C0A4 - break color*/
+/*#FFE082 - work color*/
+/*pink - DB5461*/
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	color: #2C363F;
+}
+
+body {
+	background-color: #2C363F;
+}
+
+#app {
+	height: 95vh;
+	width: 60%;
+	min-height: 500px;
+	min-width: 500px;
+	margin: auto;
+	margin-top: 1.5%;
+	border: 1px solid #2C363F;
+	border-radius: 5%;
+	overflow: hidden;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid #DB5461;
+  width: 60px;
+  text-align: center;
+  font-size: 150%;
+}
+
+header {
+	height: 15%;
+	display: flex;
+	justify-content: center;
+	background-color: #e6e6e6;
+	align-items: center;
+}
+
+header > h1 {
+	font-size: 300%;
+	font-weight: 600;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	height: 80%;
+	background-color: white;	
+}
+
+footer {
+	height: 5%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-right: 5%;
+	padding-left: 5%;
+	background-color: #e6e6e6;
+}
+
+form, #timer, #tomato {
+	width: 100%;
+	height: 100%;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+form > p {
+	width: 70%;
+	margin: 0% 10% 20% 10%;
+	font-size: 130%;
+	font-weight: 300;
+}
+
+#timer {
+	display: grid;
+	grid-template-rows: 30% 1fr 25%;
+}
+
+#timer > div {
+	display: flex;
+	align-items: center;
+}
+
+#interval-info {
+	justify-content: space-around;
+}
+
+#time, #timer-btns {
+	justify-content: center;
+}
+
+#time {
+	margin: 0% 10% 0% 10%;
+}
+
+#time > h1 {
+	font-size: 600%;
+}
+
+.WORK_TIME {
+	border: 1px solid #FFE082;
+	box-shadow: 0 0 20px #FFE082;
+	border-radius: 3%;
+}
+
+.SHORT_BREAK, .LONG_BREAK {
+	border: 1px solid #93C0A4;
+	box-shadow: 0 0 20px #93C0A4;
+	border-radius: 3%;
+}
+
+.sound-prefs {
+	display: inline-block;
+	padding-right: 10px;
+}
+
+button {
+	border: none;
+	padding: 10px;
+	border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #DB5461;
+    color: white;
+    transition: background-color .3s;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+    font-size: 120%;
+}
+
+button:hover, button:focus {
+      background-color: #C23B48;
+  }
+
+a {
+	text-decoration: none; 
+	color: #DB5461;
+}
